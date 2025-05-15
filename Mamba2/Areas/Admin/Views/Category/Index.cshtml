@@ -1,0 +1,53 @@
+﻿@using Mamba2.Models
+@model List<Category>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <p class="mb-4">
+        DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> 
+            <a asp-area="admin" asp-controller="Category" asp-action="create"> Get Create Category</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Category count</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in Model)
+                        {
+                            <tr>
+                                <td>@t.Id</td>
+                                <td>@t.Name</td>
+                                <td>@t.PortfolioList.Count</td>
+                                <td>
+                                    <a class="table table-bordered" asp-area="admin" asp-controller="Category" asp-action="Edit" asp-route-id="@t.Id"><button type="button" class="btn btn-warning">Update</button></a>
+                                </td>
+                                <td>
+                                    <a class="table table-bordered" asp-area="admin" asp-controller="Category" asp-action="Delete" asp-route-id="@t.Id"><button type="button" class="btn btn-danger">Delete</button></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

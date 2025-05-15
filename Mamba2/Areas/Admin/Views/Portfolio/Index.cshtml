@@ -1,0 +1,54 @@
+﻿@using Mamba2.Models
+@model List<Portfolio>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+    <p class="mb-4">
+        DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Images</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Category Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var t in Model)
+                        {
+                            <tr>
+                                <td>@t.Id</td>
+                                <td> <img src="~/assets/img/portfolio/@t.ImgUrl" width="90" height="80" class="img-fluid" alt=""></td>
+                                <td>@t.Title</td>
+                                <td>@t.Dectription</td>
+                                @if (t.Category is not null)
+                                {
+
+                                    <td>@t.Category.Name</td>
+                                }else{
+                                    <td>Category is null</td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
